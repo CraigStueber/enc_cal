@@ -1,5 +1,6 @@
 {
   "name": "enc_cal",
+  "homepage": "http://tuesdayknights.fun/encounter/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

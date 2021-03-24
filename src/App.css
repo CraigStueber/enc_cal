@@ -1,10 +1,13 @@
 .App {
-  text-align: center;
+  padding: 20px;
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+.CRRange {
+  width: 40%;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -35,4 +38,10 @@
   to {
     transform: rotate(360deg);
   }
+}
+.PCcount {
+  margin-right: 10px;
+  padding: 2px;
+  border: 1px solid black;
+  border-radius: 50px;
 }

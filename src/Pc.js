@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import Monsters from './Monsters'
+import './App.css';
 
 function PC ({sum}) {
     const [state, setState] = useState({
@@ -61,10 +62,11 @@ function PC ({sum}) {
     return(
         <div>
            <label>Number of Players: </label>
-           <input type="number" name="count" value={state.count} onChange={handleChange} required />
+           <input type="range" min='1' max='10' default='3' name="count" value={state.count} onChange={handleChange} required />
+           <label className="PCcount">{state.count}</label>
            <label>Level of Players: </label>
            <input type="range" min='1' max ='20' default="1" name="level" value={state.level} onChange={handleChange} required />
-           <label>{state.level}</label>
+           <label className="PCcount">{state.level}</label>
            <Monsters pcThershold={xpThershold} />
         </div>
     )

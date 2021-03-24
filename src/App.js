@@ -1,10 +1,10 @@
 import PC from './Pc'
-
+import './App.css';
 function App() {
 
 
   return (
-    <div>
+    <div className="App">
     <h1>Encounter Calculator</h1>
     <PC />
     </div>

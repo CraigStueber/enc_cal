@@ -3,7 +3,7 @@ import React, {useState} from 'react'
 import Encounter from './EncounterLevel';
 
 function Monsters({pcThershold}) {
-const [pc, setPc] = useState([{Name: "", PC: "", Level:""}])
+const [pc, setPc] = useState([{Name: "", PC: "", Level:"", CR:""}])
 
 //handle input change
 const handleInputChange = (e, index) => {
@@ -22,8 +22,28 @@ const handleRemoveClick = index => {
 
 //handle click event of the Add button
 const handelAddClick = () => {
-  setPc([...pc, {PC: "", Level: ""}])
+  setPc([...pc, {PC: "", Level: "", CR:""}])
 }
+
+
+const CRNumber=(x)=>{
+  let CRNum = '';
+if (x==='1'){
+  CRNum = '1/8'
+}else if (x === '2'){
+  CRNum = '1/4'
+}else if(x=== '3'){
+  CRNum = '1/2'
+}else if (x>3){
+  CRNum = x-3
+}else{
+  CRNum= '0'
+}
+
+return (CRNum)
+
+}
+
 
 const xp = (x , y) =>{
   var z = 0;
@@ -42,102 +62,102 @@ const xp = (x , y) =>{
   }
  
 
-  if (x === '.1'){
+  if (x === '1'){
       x = 25
   }
-  else if (x==='.25'){
+  else if (x==='2'){
       x = 50
   }
-  else if (x==='.5'){
+  else if (x==='3'){
       x = 100
   }
-  else if (x==='1'){
+  else if (x==='4'){
     x = 200
-  }else if (x==='2'){
+  }else if (x==='5'){
     x = 450
   }
-  else if (x==='3'){
+  else if (x==='6'){
     x = 700
   }
-  else if (x==='4'){
+  else if (x==='7'){
     x = 1100
   }
-  else if (x==='5'){
+  else if (x==='8'){
     x = 1800
   }
-  else if (x==='6'){
+  else if (x==='9'){
     x = 2300
   }
-  else if (x==='7'){
+  else if (x==='10'){
     x = 2900
   }
-  else if (x==='8'){
+  else if (x==='11'){
     x = 3900
   }
-  else if (x==='9'){
+  else if (x==='12'){
     x = 5000
   }
-  else if (x==='10'){
+  else if (x==='13'){
     x = 5900
   }
-  else if (x==='11'){
+  else if (x==='14'){
     x = 7200
   }
-  else if (x==='12'){
+  else if (x==='15'){
     x = 8400
   }
-  else if (x==='13'){
+  else if (x==='16'){
     x = 10000
   }
-  else if (x==='14'){
+  else if (x==='17'){
     x = 11500
   }
-  else if (x==='15'){
+  else if (x==='18'){
     x = 13000
   }
-  else if (x==='16'){
+  else if (x==='19'){
     x = 15000
   }
-  else if (x==='17'){
+  else if (x==='20'){
     x = 18000
   }
-  else if (x==='18'){
+  else if (x==='21'){
     x = 20000
   }
-  else if (x==='19'){
+  else if (x==='22'){
     x = 22000
   }
-  else if (x==='20'){
+  else if (x==='23'){
     x = 25000
   }
-  else if (x==='21'){
+  else if (x==='24'){
     x = 33000
   }
-  else if (x==='22'){
+  else if (x==='25'){
     x = 41000
   }
-  else if (x==='23'){
+  else if (x==='26'){
     x = 50000
   }
-  else if (x==='24'){
+  else if (x==='27'){
     x = 62000
   }
-  else if (x==='25'){
+  else if (x==='28'){
     x = 75000
   }
-  else if (x==='26'){
+  else if (x==='29'){
     x = 90000
   }
-  else if (x==='27'){
+  else if (x==='30'){
     x = 105000
   }
-  else if (x==='28'){
+  else if (x==='31'){
     x = 120000
   }
-  else if (x==='29'){
+  else if (x==='32'){
     x = 135000
   }
-  else if (x==='30'){
+  else if (x==='33'){
     x = 155000
   }else{
     x = 88
@@ -149,7 +169,7 @@ const xp = (x , y) =>{
 
 }
 
-var sum = pc.reduce((total , currentValue)=> total = total + (xp(currentValue.Level, currentValue.PC) ),0)
+var sum = pc.reduce((total , currentValue)=> total = total + (xp(currentValue.CR, currentValue.PC) ),0)
 
   return (
     <div className="Monsters">
@@ -174,15 +194,18 @@ var sum = pc.reduce((total , currentValue)=> total = total + (xp(currentValue.Le
               value={x.PC}
               onChange={e => handleInputChange(e,i)}
               />
-              <input
-              type="number"
-              className="ml10"
-              name="Level"
-              placeholder="CR Level"
-              value={x.Level}
+         
+              <input className="CRRange"
+              type="range"
+              name="CR"
+              min='1'
+              max='33'
+              defaultValue = '4'
+              value={x.CR}
               onChange={e => handleInputChange(e,i)}
               />
-              <p>For cr 1/8 please type .1 for cr 1/4 type .25 for cr 1/2 please type .5</p>
+              <label>CR : {CRNumber(x.CR)}</label>
+             
 
             </div>}
             
